@@ -35,5 +35,13 @@ if __name__ == '__main__': # all immediate code should be here
     print('----')
     # print( num_g.__next__() ) # nothing left to yield!! we get an exception
 
+    # using range, generators and 'comprehension'
+    odd_t = (num for num in r if num%2 == 1) # this returns lots of ODD numbers
+    even_l = [num for num in r if num%2 == 0] # ...even numbers in range
+    print(-7 in even_l) # False
     
-    
+# casting user input. Maybe we need an integer from the user
+i = input('Enter an integer ')
+# cast the entered string to an int
+i_int = int(float(i)) # cast to a float then cast to an int
+print(i, type(i), i_int, type(i_int))
