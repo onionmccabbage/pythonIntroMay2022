@@ -27,6 +27,12 @@ print(a) # we can print the string
 print( a[0:6:2] ) # [start:stop-before:step]
 print(a[::-1]) # step through the collection backwards
 print(a[6:0:-2]) # start at the end, stop before the beginning and step backards 2 !!
+
+print(a[0:6:1]) #exhausts the string
+print(a[6:0:-1]) # will miss the p
+print(a[6:-1        :-1]) # goes empty
+print(a[6::-1]) # works
+
 # we use index to work with items in ordinal collections
 l = [a, b, c, d, 'literal', 32.1] # this is a list: an ordinal collection of mixed data types
 print(l[::2])
