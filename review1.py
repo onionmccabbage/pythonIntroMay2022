@@ -2,9 +2,9 @@
 from random import randint # we need a way to make random numbers
 
 def makeSquares():
-    squares = []
+    squares = [] # an empty list
     for i in range(0, 11):
-        squares.append(i*i)
+        squares.append(i*i) # append to our list
     return squares
 
 def game():
