@@ -26,11 +26,12 @@ def simpleInput():
 def fileWriter(t): # we expect some input
     '''write text to a file in chunks - progressively'''
     try:
-        fout   = open('mylog.txt', 'a') # 'a' will append - text is the default
+        # fout   = open('mylog.txt', 'w') # 'w' will (over)write 'a' will append - text is the default
+        fout   = open('mylog.txt', 'x') # 'x' means exclusive access - only works if the file does NOT already exist
         size   = len(t)
         offset = 0
         chunk  = 24
-        # we can loop over our txt, writing a chunk at a time
+        # we can loop over our text, writing a chunk at a time
         while True:
             if offset > size:
                 fout.write('\n') # finish up with a new line character
@@ -38,13 +39,27 @@ def fileWriter(t): # we expect some input
             else:
                 fout.write(t[offset:offset+chunk]) # write a chunk of text
                 offset += chunk # move the offset for the next iteration
+    except FileExistsError as fe:
+        print('The file cannot be written because it already exists {}'.format(fe))
     except Exception as e:
         print('Problem: {}'.format(e))
     finally:
         fout.close()
         print('all done')
 
+# reading files elegantly
+def fileReader():
+    try:
+        with open('mylog.txt', 'r') as fin: # 'r' will read (default is text)
+            retrieved = fin.read()
+            print(retrieved)
+    except Exception as e:
+        print(e)
+    # NB using the 'with' operator will automatically close the file access object
+
+
 if __name__ == '__main__':
     # simpleOutput()
     # simpleInput()
-    fileWriter('it is nearly time for lunch so lets hope this code works as intended')
+    # fileWriter('Lets hope this code works as intended - writing some output to a log')
+    fileReader()
