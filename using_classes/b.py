@@ -24,3 +24,6 @@ if __name__ == '__main__':
     print(c) # any time wwe try to print an instance of our Coder class, it will use __str__ method
     z = c.language
     print(z) # BUT if we try to access a property, the built-in __str__ is still used (default printout)
+    # we can still access the original location of the classes
+    pers = Person('Greta', 20)
+    print(pers.__class__) # it was imported
